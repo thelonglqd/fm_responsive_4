@@ -1,0 +1,58 @@
+$font-family-base: 'Red Hat Display', sans-serif;
+
+$sizes: (
+  'xxl': 4rem,
+  'xl': 2.5rem,
+  'lg': 1.125rem,
+  'base': 1rem,
+);
+
+$lineheights: (
+  'base': 1.1,
+  'lg': 1.5,
+);
+
+$letterspacings: (
+  'base': 0,
+  'lg': 4px,
+);
+
+$weights: (
+  'medium': 500,
+  'black': 900,
+);
+
+@mixin text-preset-1 {
+  font-size: map-get($size, xxl);
+  font-weight: map-get($weights, black);
+  line-height: map-get($lineheights, base);
+  letter-spacing: map-get($letterspacings, base);
+}
+
+@mixin text-preset-2 {
+  font-size: map-get($size, xl);
+  font-weight: map-get($weights, black);
+  line-height: map-get($lineheights, base);
+  letter-spacing: map-get($letterspacings, base);
+}
+
+@mixin text-preset-3 {
+  font-size: map-get($size, base);
+  font-weight: map-get($weights, black);
+  line-height: map-get($lineheights, base);
+  letter-spacing: map-get($letterspacings, lg);
+}
+
+@mixin text-preset-4 {
+  font-size: map-get($size, lg);
+  font-weight: map-get($weights, medium);
+  line-height: map-get($lineheights, base);
+  letter-spacing: map-get($letterspacings, base);
+}
+
+@mixin text-preset-5 {
+  font-size: map-get($size, base);
+  font-weight: map-get($weights, black);
+  line-height: map-get($lineheights, lg);
+  letter-spacing: map-get($letterspacings, base);
+}
