@@ -5,7 +5,76 @@
 }
 
 body {
-  background-color: #87879d;
+  font-family: "Red Hat Display", sans-serif;
+  background-color: #fafafa;
+}
+
+main {
+  padding-block: 2.5rem;
+}
+
+.header__logo .header__image {
+  margin: 0 auto;
+  width: 7rem;
+}
+.header__logo .header__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero__image {
+  display: flex;
+  align-items: center;
+  margin-block-start: 2.5rem;
+}
+.hero__image--left {
+  transform: translateX(-1.5rem);
+}
+.hero__image--left img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.hero__image--right {
+  transform: translateX(1.5rem);
+}
+.hero__image--right img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.heading .heading__title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+@media (min-width: 768px) {
+  .heading .heading__title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+}
+@media (min-width: 1280px) {
+  .heading .heading__title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+}
+.heading .heading__title--up, .heading .heading__title--down {
+  display: block;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -7,5 +7,61 @@
 }
 
 body {
-  background-color: $clr-slate-600;
+  font-family: $font-family-base;
+  background-color: $clr-white;
+}
+
+main {
+  padding-block: map-get($spaces, spacing-500);
+}
+
+.header__logo {
+  .header__image {
+    margin: 0 auto;
+    width: map-get($spaces, spacing-1400);
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+.hero__image {
+  display: flex;
+  align-items: center;
+  margin-block-start: map-get($spaces, spacing-500);
+  &--left {
+    transform: translateX(- map-get($spaces, spacing-300));
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  &--right {
+    transform: translateX(map-get($spaces, spacing-300));
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .heading__title {
+    text-align: center;
+    @include text-preset(1);
+
+    &--up,
+    &--down {
+      display: block;
+    }
+  }
 }
