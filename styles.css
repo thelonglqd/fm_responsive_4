@@ -7,7 +7,7 @@
   letter-spacing: var(--p1-ls);
 }
 
-.text-preset-2 {
+.text-preset-2, .feature__description .feature__title, .footer .footer__title {
   font-family: var(--font-family-base);
   font-size: var(--p2-size);
   font-weight: var(--p2-weight);
@@ -15,7 +15,7 @@
   letter-spacing: var(--p2-ls);
 }
 
-.text-preset-3 {
+.text-preset-3, .feature__description .feature__subtitle {
   font-family: var(--font-family-base);
   font-size: var(--p3-size);
   font-weight: var(--p3-weight);
@@ -23,7 +23,7 @@
   letter-spacing: var(--p3-ls);
 }
 
-.text-preset-4, .heading .heading__description {
+.text-preset-4, .heading .heading__description, .feature__description .feature__detail, .footer .footer__description {
   font-family: var(--font-family-base);
   font-size: var(--p4-size);
   font-weight: var(--p4-weight);
@@ -112,13 +112,9 @@ body {
   background-color: #fafafa;
 }
 
-main {
-  padding-block: 2.5rem;
-}
-
 .main-layout {
   display: grid;
-  grid-template-columns: [full-start] minmax(1rem, 1fr) [main-start] minmax(0, 75rem) minmax(1rem, 1fr) [full-end];
+  grid-template-columns: [full-start] minmax(2rem, 1fr) [main-start] minmax(0, 75rem) [main-end] minmax(2rem, 1fr) [full-end];
 }
 .main-layout > * {
   grid-column: main;
@@ -127,7 +123,6 @@ main {
 .main-layout > .full-bleed {
   justify-self: center;
   grid-column: full;
-  width: 100%;
 }
 
 .btn {
@@ -135,20 +130,25 @@ main {
   border-radius: 100px;
   padding: 1rem 2.5rem;
 }
-.btn span {
-  color: #fafafa;
-}
-
 .btn--primary {
   background-color: #4d96a9;
+}
+.btn--primary span {
+  color: #fafafa;
+}
+.btn--primary span:last-child {
+  color: #8fe3f9;
 }
 
 .btn--secondary {
   background-color: #855fb1;
 }
+.btn--secondary span {
+  color: #fafafa;
+}
 
-.header__logo .header__image {
-  width: 7rem;
+.header__logo {
+  margin-block-start: 3.5rem;
 }
 .header__logo .header__image img {
   width: 100%;
@@ -162,7 +162,8 @@ main {
   margin-block-start: 2.5rem;
 }
 .hero__image--left {
-  transform: translateX(-1.5rem);
+  transform: translateX(-1.75rem);
+  margin-right: -1.75rem;
 }
 .hero__image--left img {
   width: 100%;
@@ -170,7 +171,7 @@ main {
   object-fit: cover;
 }
 .hero__image--right {
-  transform: translateX(1.5rem);
+  transform: translateX(1.75rem);
 }
 .hero__image--right img {
   width: 100%;
@@ -179,11 +180,11 @@ main {
 }
 
 .heading .heading__information {
-  margin: 1.5rem auto;
-  width: min(80%, 1200px);
+  margin-block-start: 3.5rem;
 }
 .heading .heading__title {
   text-align: center;
+  color: #28283d;
 }
 .heading .heading__title--up, .heading .heading__title--down {
   display: block;
@@ -199,30 +200,110 @@ main {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  margin-block: 1rem;
 }
 
 .number__divider {
-  margin: 7rem auto;
+  z-index: 3;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 3.5rem;
   height: 3.5rem;
-  border: 1px solid #d4d4d4;
+  border: 1px solid #d1d1df;
   border-radius: 50%;
+  background-color: #fafafa;
 }
 .number__divider p {
   color: #87879d;
 }
+.number__divider--1 {
+  margin: 7.5rem 0 4.5rem 0;
+}
+.number__divider--2 {
+  margin-block-start: 7.5rem;
+}
 
 .line {
   position: absolute;
-  background-color: #d4d4d4;
+  background-color: #d1d1df;
   width: 1px;
   height: 5rem;
   bottom: 100%;
   left: 50%;
+}
+
+.customer__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.customer__images .image {
+  border-radius: 0.5rem;
+}
+.customer__images .image img {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.feature__description {
+  margin-block: 2.5rem;
+}
+.feature__description .feature__subtitle {
+  text-transform: uppercase;
+  text-align: center;
+  color: #4d96a9;
+}
+.feature__description .feature__title {
+  margin-block-start: 1rem;
+  text-align: center;
+  color: #28283d;
+}
+.feature__description .feature__detail {
+  margin-block-start: 2.5rem;
+  text-align: center;
+  color: #87879d;
+}
+
+.footer {
+  margin-top: -1.75rem;
+  padding: 4rem 2rem;
+  position: relative;
+  color: #fafafa;
+  background-image: url("assets/desktop/image-footer.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.footer::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(77, 150, 169, 0.8);
+  z-index: 1;
+}
+.footer .footer__title {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.footer .footer__description {
+  margin-block: 1rem;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.footer .footer__cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
