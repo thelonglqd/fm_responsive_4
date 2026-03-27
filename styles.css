@@ -1,7 +1,110 @@
+@charset "UTF-8";
+.text-preset-1, .heading .heading__title {
+  font-family: var(--font-family-base);
+  font-size: var(--p1-size);
+  font-weight: var(--p1-weight);
+  line-height: var(--p1-lh);
+  letter-spacing: var(--p1-ls);
+}
+
+.text-preset-2 {
+  font-family: var(--font-family-base);
+  font-size: var(--p2-size);
+  font-weight: var(--p2-weight);
+  line-height: var(--p2-lh);
+  letter-spacing: var(--p2-ls);
+}
+
+.text-preset-3 {
+  font-family: var(--font-family-base);
+  font-size: var(--p3-size);
+  font-weight: var(--p3-weight);
+  line-height: var(--p3-lh);
+  letter-spacing: var(--p3-ls);
+}
+
+.text-preset-4, .heading .heading__description {
+  font-family: var(--font-family-base);
+  font-size: var(--p4-size);
+  font-weight: var(--p4-weight);
+  line-height: var(--p4-lh);
+  letter-spacing: var(--p4-ls);
+}
+
+.text-preset-5, .btn span, .number__divider p {
+  font-family: var(--font-family-base);
+  font-size: var(--p5-size);
+  font-weight: var(--p5-weight);
+  line-height: var(--p5-lh);
+  letter-spacing: var(--p5-ls);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  /* Font Family */
+  --font-family-base: 'Red Hat Display', sans-serif;
+  /* Font Sizes */
+  --fs-50: 0.75rem;
+  --fs-100: 0.875rem;
+  --fs-200: 1rem;
+  --fs-300: 1.125rem;
+  --fs-400: 2rem;
+  --fs-500: 2.25rem;
+  --fs-600: 2.5rem;
+  --fs-700: 3rem;
+  --fs-800: 4rem;
+  /* Line Heights & Letter Spacing */
+  --lh-base: 1.1;
+  --lh-lg: 1.5;
+  --ls-base: 0;
+  --ls-lg: 4px;
+  /* Weights */
+  --fw-medium: 500;
+  --fw-black: 900;
+}
+
+:root {
+  /* Preset 1 */
+  --p1-size: var(--fs-600);
+  --p1-weight: var(--fw-black);
+  --p1-lh: var(--lh-base);
+  --p1-ls: var(--ls-base);
+  /* Preset 2: XL + Black + LH Base + LS Base */
+  --p2-size: var(--fs-400);
+  --p2-weight: var(--fw-black);
+  --p2-lh: var(--lh-base);
+  --p2-ls: var(--ls-base);
+  /* Preset 3 */
+  --p3-size: var(--fs-50);
+  --p3-weight: var(--fw-black);
+  --p3-lh: var(--lh-base);
+  --p3-ls: var(--ls-lg);
+  /* Preset 4 */
+  --p4-size: var(--fs-200);
+  --p4-weight: var(--fw-medium);
+  --p4-lh: var(--lh-lg);
+  --p4-ls: var(--ls-base);
+  /* Preset 5 */
+  --p5-size: var(--fs-200);
+  --p5-weight: var(--fw-black);
+  --p5-lh: var(--lh-lg);
+  --p5-ls: var(--ls-base);
+  /* Responsive: Chỉ ghi đè những thứ THAY ĐỔI */
+}
+@media (min-width: 768px) {
+  :root {
+    --p1-size: var(--fs-700);
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --p1-size: var(--fs-800);
+  }
 }
 
 body {
@@ -13,8 +116,38 @@ main {
   padding-block: 2.5rem;
 }
 
+.main-layout {
+  display: grid;
+  grid-template-columns: [full-start] minmax(1rem, 1fr) [main-start] minmax(0, 75rem) minmax(1rem, 1fr) [full-end];
+}
+.main-layout > * {
+  grid-column: main;
+  justify-self: center;
+}
+.main-layout > .full-bleed {
+  justify-self: center;
+  grid-column: full;
+  width: 100%;
+}
+
+.btn {
+  border: none;
+  border-radius: 100px;
+  padding: 1rem 2.5rem;
+}
+.btn span {
+  color: #fafafa;
+}
+
+.btn--primary {
+  background-color: #4d96a9;
+}
+
+.btn--secondary {
+  background-color: #855fb1;
+}
+
 .header__logo .header__image {
-  margin: 0 auto;
   width: 7rem;
 }
 .header__logo .header__image img {
@@ -45,36 +178,51 @@ main {
   object-fit: cover;
 }
 
-.heading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.heading .heading__information {
+  margin: 1.5rem auto;
+  width: min(80%, 1200px);
 }
 .heading .heading__title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-@media (min-width: 768px) {
-  .heading .heading__title {
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: 0;
-  }
-}
-@media (min-width: 1280px) {
-  .heading .heading__title {
-    font-size: 4rem;
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: 0;
-  }
 }
 .heading .heading__title--up, .heading .heading__title--down {
   display: block;
+}
+.heading .heading__description {
+  margin-block-start: 2rem;
+  text-align: center;
+  color: #87879d;
+}
+.heading .heading__cta {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.number__divider {
+  margin: 7rem auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 50%;
+}
+.number__divider p {
+  color: #87879d;
+}
+
+.line {
+  position: absolute;
+  background-color: #d4d4d4;
+  width: 1px;
+  height: 5rem;
+  bottom: 100%;
+  left: 50%;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -6,6 +6,75 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* Font Family */
+  --font-family-base: 'Red Hat Display', sans-serif;
+
+  /* Font Sizes */
+  --fs-50: 0.75rem;
+  --fs-100: 0.875rem;
+  --fs-200: 1rem;
+  --fs-300: 1.125rem;
+  --fs-400: 2rem;
+  --fs-500: 2.25rem;
+  --fs-600: 2.5rem;
+  --fs-700: 3rem;
+  --fs-800: 4rem;
+
+  /* Line Heights & Letter Spacing */
+  --lh-base: 1.1;
+  --lh-lg: 1.5;
+  --ls-base: 0;
+  --ls-lg: 4px;
+
+  /* Weights */
+  --fw-medium: 500;
+  --fw-black: 900;
+}
+
+:root {
+  /* Preset 1 */
+  --p1-size: var(--fs-600);
+  --p1-weight: var(--fw-black);
+  --p1-lh: var(--lh-base);
+  --p1-ls: var(--ls-base);
+
+  /* Preset 2: XL + Black + LH Base + LS Base */
+  --p2-size: var(--fs-400);
+  --p2-weight: var(--fw-black);
+  --p2-lh: var(--lh-base);
+  --p2-ls: var(--ls-base);
+
+  /* Preset 3 */
+  --p3-size: var(--fs-50);
+  --p3-weight: var(--fw-black);
+  --p3-lh: var(--lh-base);
+  --p3-ls: var(--ls-lg);
+
+  /* Preset 4 */
+  --p4-size: var(--fs-200);
+  --p4-weight: var(--fw-medium);
+  --p4-lh: var(--lh-lg);
+  --p4-ls: var(--ls-base);
+
+  /* Preset 5 */
+  --p5-size: var(--fs-200);
+  --p5-weight: var(--fw-black);
+  --p5-lh: var(--lh-lg);
+  --p5-ls: var(--ls-base);
+
+  /* Responsive: Chỉ ghi đè những thứ THAY ĐỔI */
+  @media (min-width: 768px) {
+    // Tablet preset 1
+    --p1-size: var(--fs-700);
+  }
+
+  @media (min-width: 1280px) {
+    // Desktop
+    --p1-size: var(--fs-800);
+  }
+}
+
 body {
   font-family: $font-family-base;
   background-color: $clr-white;
@@ -15,9 +84,50 @@ main {
   padding-block: map-get($spaces, spacing-500);
 }
 
+.main-layout {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(map-get($spaces, spacing-200), 1fr)
+    [main-start] minmax(0, 75rem) minmax(
+      map-get($spaces, spacing-200),
+      1fr
+    )
+    [full-end];
+
+  & > * {
+    grid-column: main;
+    justify-self: center;
+  }
+
+  & > .full-bleed {
+    justify-self: center;
+    grid-column: full;
+    width: 100%;
+  }
+}
+
+.btn {
+  border: none;
+  border-radius: 100px;
+  padding: map-get($spaces, spacing-200)
+    map-get($spaces, spacing-500);
+
+  span {
+    @extend .text-preset-5;
+    color: $clr-white;
+  }
+}
+
+.btn--primary {
+  background-color: $clr-cyan-600;
+}
+
+.btn--secondary {
+  background-color: $clr-purple-600;
+}
+
 .header__logo {
   .header__image {
-    margin: 0 auto;
     width: map-get($spaces, spacing-1400);
 
     img {
@@ -52,16 +162,60 @@ main {
 }
 
 .heading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  .heading__information {
+    margin: map-get($spaces, spacing-300) auto;
+    width: min(80%, 1200px);
+  }
+
   .heading__title {
     text-align: center;
-    @include text-preset(1);
+    @extend .text-preset-1;
 
     &--up,
     &--down {
       display: block;
     }
   }
+
+  .heading__description {
+    margin-block-start: map-get($spaces, spacing-400);
+    @extend .text-preset-4;
+    text-align: center;
+    color: $clr-slate-600;
+  }
+
+  .heading__cta {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: map-get($spaces, spacing-200);
+    justify-content: center;
+  }
+}
+
+.number__divider {
+  margin: map-get($spaces, spacing-1400) auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: map-get($spaces, spacing-700);
+  height: map-get($spaces, spacing-700);
+  border: 1px solid #d4d4d4;
+  border-radius: 50%;
+
+  p {
+    @extend .text-preset-5;
+    color: $clr-slate-600;
+  }
+}
+
+.line {
+  position: absolute;
+  background-color: #d4d4d4;
+  width: 1px;
+  height: map-get($spaces, spacing-1000);
+  bottom: 100%;
+  left: 50%;
+  // transform: rotate(90deg);
 }
