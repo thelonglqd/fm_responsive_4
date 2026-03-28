@@ -273,10 +273,12 @@ body {
   padding: 4rem 2rem;
   position: relative;
   color: #fafafa;
-  background-image: url("assets/desktop/image-footer.jpg");
-  background-position: center;
+  background-image: url("assets/mobile/image-footer.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 .footer::before {
   position: absolute;
@@ -285,7 +287,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(77, 150, 169, 0.8);
+  background-color: rgba(77, 150, 169, 0.9);
   z-index: 1;
 }
 .footer .footer__title {
@@ -294,7 +296,6 @@ body {
   text-align: center;
 }
 .footer .footer__description {
-  margin-block: 1rem;
   position: relative;
   z-index: 2;
   text-align: center;
