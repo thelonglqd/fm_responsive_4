@@ -66,7 +66,7 @@
   /* Responsive: Chỉ ghi đè những thứ THAY ĐỔI */
   @media (min-width: 768px) {
     // Tablet preset 1
-    --p1-size: var(--fs-700);
+    --p1-size: var(--fs-600);
   }
 
   @media (min-width: 1280px) {
@@ -95,6 +95,7 @@ body {
   & > .full-bleed {
     justify-self: center;
     grid-column: full;
+    overflow-x: hidden;
   }
 }
 
@@ -167,6 +168,7 @@ body {
 
 .heading {
   .heading__information {
+    max-width: 30rem;
     margin-block-start: map-get($spaces, spacing-700);
   }
 
@@ -210,19 +212,15 @@ body {
   border: 1px solid $clr-slate-300;
   border-radius: 50%;
   background-color: $clr-white;
+  margin-block-start: map-get($spaces, spacing-1500);
 
   p {
     @extend .text-preset-5;
     color: $clr-slate-600;
   }
 
-  &--1 {
-    margin: map-get($spaces, spacing-1500) 0
-      map-get($spaces, spacing-900) 0;
-  }
-
   &--2 {
-    margin-block-start: map-get($spaces, spacing-1500);
+    margin-bottom: - map-get($spaces, spacing-350);
   }
 }
 
@@ -239,6 +237,10 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: map-get($spaces, spacing-200);
+  margin-block: map-get($spaces, spacing-800);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   .image {
     border-radius: map-get($spaces, spacing-100);
@@ -252,7 +254,8 @@ body {
 }
 
 .feature__description {
-  margin-block: map-get($spaces, spacing-500);
+  max-width: 30rem;
+  // margin-block: map-get($spaces, spacing-500);
 
   .feature__subtitle {
     @extend .text-preset-3;
@@ -277,18 +280,27 @@ body {
 }
 
 .footer {
-  margin-top: - map-get($spaces, spacing-350);
+  width: 100%;
+  // margin-top: - map-get($spaces, spacing-350);
   padding: map-get($spaces, spacing-800)
     map-get($spaces, spacing-400);
   position: relative;
   color: $clr-white;
   background-image: url('assets/mobile/image-footer.jpg');
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: map-get($spaces, spacing-300);
+
+  @media (min-width: 768px) {
+    background-image: url('assets/tablet/image-footer.jpg');
+    // background-size: cover;
+    // background-repeat: no-repeat;
+  }
 
   &::before {
     position: absolute;
@@ -310,7 +322,7 @@ body {
   }
 
   .footer__description {
-    // margin-block: map-get($spaces, spacing-300);
+    max-width: 30rem;
     position: relative;
     z-index: 2;
     @extend .text-preset-4;
@@ -323,5 +335,6 @@ body {
 
     display: flex;
     justify-content: center;
+    // margin-bottom: 200px;
   }
 }
