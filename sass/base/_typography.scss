@@ -1,7 +1,7 @@
 $font-family-base: 'Red Hat Display', sans-serif;
 
 @for $i from 1 through 5 {
-  .text-preset-#{$i} {
+  %text-preset-#{$i} {
     font-family: var(--font-family-base);
     font-size: var(--p#{$i}-size);
     font-weight: var(--p#{$i}-weight);

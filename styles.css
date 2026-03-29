@@ -1,4 +1,4 @@
-.text-preset-1, .hero__container .heading .heading__title {
+.hero__container .heading .heading__title {
   font-family: var(--font-family-base);
   font-size: var(--p1-size);
   font-weight: var(--p1-weight);
@@ -6,7 +6,7 @@
   letter-spacing: var(--p1-ls);
 }
 
-.text-preset-2, .feature__description .feature__title, .footer .footer__title {
+.feature__description .feature__title, .footer .footer__title {
   font-family: var(--font-family-base);
   font-size: var(--p2-size);
   font-weight: var(--p2-weight);
@@ -14,7 +14,7 @@
   letter-spacing: var(--p2-ls);
 }
 
-.text-preset-3, .feature__description .feature__subtitle {
+.feature__description .feature__subtitle {
   font-family: var(--font-family-base);
   font-size: var(--p3-size);
   font-weight: var(--p3-weight);
@@ -22,7 +22,7 @@
   letter-spacing: var(--p3-ls);
 }
 
-.text-preset-4, .hero__container .heading .heading__description, .feature__description .feature__detail, .footer .footer__description {
+.hero__container .heading .heading__description, .feature__description .feature__detail, .footer .footer__description {
   font-family: var(--font-family-base);
   font-size: var(--p4-size);
   font-weight: var(--p4-weight);
@@ -30,7 +30,7 @@
   letter-spacing: var(--p4-ls);
 }
 
-.text-preset-5, .btn span, .number__divider .number {
+.btn span, .number__divider .number {
   font-family: var(--font-family-base);
   font-size: var(--p5-size);
   font-weight: var(--p5-weight);
@@ -115,12 +115,12 @@ body {
   grid-template-columns: [full-start] minmax(2rem, 1fr) [main-start] minmax(0, 75rem) [main-end] minmax(2rem, 1fr) [full-end];
 }
 .main-layout > * {
-  grid-column: main;
+  grid-column: main-start/main-end;
   justify-self: center;
 }
 .main-layout > .full-bleed {
   justify-self: stretch;
-  grid-column: full;
+  grid-column: full-start/full-end;
   overflow-x: hidden;
 }
 
@@ -309,7 +309,7 @@ body {
 
 .footer {
   padding: 7rem 4rem;
-  grid-column: full;
+  grid-column: full-start/full-end;
   display: grid;
   grid-template-columns: inherit;
   margin-block-start: -1.75rem;
@@ -337,7 +337,7 @@ body {
   z-index: 1;
 }
 .footer .footer__content {
-  grid-column: main;
+  grid-column: main-start/main-end;
   display: flex;
   flex-direction: column;
   align-items: center;

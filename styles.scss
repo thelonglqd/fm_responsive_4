@@ -87,13 +87,13 @@ body {
     minmax(map-get($spaces, spacing-400), 1fr) [full-end];
 
   & > * {
-    grid-column: main;
+    grid-column: main-start / main-end;
     justify-self: center;
   }
 
   & > .full-bleed {
     justify-self: stretch;
-    grid-column: full;
+    grid-column: full-start / full-end;
     overflow-x: hidden;
   }
 }
@@ -105,7 +105,7 @@ body {
     map-get($spaces, spacing-500);
 
   span {
-    @extend .text-preset-5;
+    @extend %text-preset-5;
   }
 }
 
@@ -215,7 +215,7 @@ body {
 
     .heading__title {
       text-align: center;
-      @extend .text-preset-1;
+      @extend %text-preset-1;
       color: $clr-slate-900;
 
       &--up,
@@ -226,7 +226,7 @@ body {
 
     .heading__description {
       margin-block-start: map-get($spaces, spacing-400);
-      @extend .text-preset-4;
+      @extend %text-preset-4;
       text-align: center;
       color: $clr-slate-600;
     }
@@ -264,7 +264,7 @@ body {
     height: map-get($map: $spaces, $key: spacing-700);
     border-radius: 50%;
     border: 1px solid $clr-slate-300;
-    @extend .text-preset-5;
+    @extend %text-preset-5;
     color: $clr-slate-600;
   }
 
@@ -299,7 +299,7 @@ body {
   // margin-block: map-get($spaces, spacing-500);
 
   .feature__subtitle {
-    @extend .text-preset-3;
+    @extend %text-preset-3;
     text-transform: uppercase;
     text-align: center;
     color: $clr-cyan-600;
@@ -307,7 +307,7 @@ body {
 
   .feature__title {
     margin-block-start: map-get($spaces, spacing-200);
-    @extend .text-preset-2;
+    @extend %text-preset-2;
     text-align: center;
     color: $clr-slate-900;
   }
@@ -315,7 +315,7 @@ body {
   .feature__detail {
     margin-block-start: map-get($spaces, spacing-500);
     text-align: center;
-    @extend .text-preset-4;
+    @extend %text-preset-4;
     color: $clr-slate-600;
   }
 }
@@ -323,7 +323,7 @@ body {
 .footer {
   padding: map-get($spaces, spacing-1400)
     map-get($spaces, spacing-800);
-  grid-column: full;
+  grid-column: full-start / full-end;
   display: grid;
   grid-template-columns: inherit;
 
@@ -356,7 +356,7 @@ body {
   }
 
   .footer__content {
-    grid-column: main;
+    grid-column: main-start / main-end;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -372,7 +372,7 @@ body {
     position: relative;
     z-index: 2;
 
-    @extend .text-preset-2;
+    @extend %text-preset-2;
     text-align: center;
   }
 
@@ -380,7 +380,7 @@ body {
     max-width: 30rem;
     position: relative;
     z-index: 2;
-    @extend .text-preset-4;
+    @extend %text-preset-4;
     text-align: center;
   }
 
