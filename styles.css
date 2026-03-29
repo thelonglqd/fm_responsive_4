@@ -31,7 +31,7 @@
   letter-spacing: var(--p4-ls);
 }
 
-.text-preset-5, .btn span, .number__divider p {
+.text-preset-5, .btn span, .number__divider .number {
   font-family: var(--font-family-base);
   font-size: var(--p5-size);
   font-weight: var(--p5-weight);
@@ -215,36 +215,33 @@ body {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin-block: 1rem;
+  margin-block: 1rem 4rem;
 }
 
 .number__divider {
-  z-index: 3;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-start: 3.5rem;
+}
+.number__divider .line {
+  height: 5rem;
+  width: 1px;
+  border: 1px solid #d1d1df;
+}
+.number__divider .number {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 3.5rem;
   height: 3.5rem;
-  border: 1px solid #d1d1df;
   border-radius: 50%;
-  background-color: #fafafa;
-  margin-block-start: 7.5rem;
-}
-.number__divider p {
+  border: 1px solid #d1d1df;
   color: #87879d;
 }
-.number__divider--2 {
-  margin-bottom: -1.75rem;
-}
-
-.line {
-  position: absolute;
-  background-color: #d1d1df;
-  width: 1px;
-  height: 5rem;
-  bottom: 100%;
-  left: 50%;
+.number__divider--2 .number {
+  background-color: #fff;
+  z-index: 2;
 }
 
 .customer__images {
@@ -288,6 +285,7 @@ body {
 }
 
 .footer {
+  margin-block-start: -1.75rem;
   width: 100%;
   padding: 4rem 2rem;
   position: relative;

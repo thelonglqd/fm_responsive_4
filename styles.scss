@@ -209,40 +209,39 @@ body {
     gap: map-get($spaces, spacing-200);
     justify-content: center;
 
-    margin-block: map-get($spaces, spacing-200);
+    margin-block: map-get($spaces, spacing-200)
+      map-get($spaces, spacing-800);
   }
 }
 
 .number__divider {
-  z-index: 3;
-  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: map-get($spaces, spacing-700);
-  height: map-get($spaces, spacing-700);
-  border: 1px solid $clr-slate-300;
-  border-radius: 50%;
-  background-color: $clr-white;
-  margin-block-start: map-get($spaces, spacing-1500);
+  margin-block-start: map-get($spaces, spacing-700);
 
-  p {
+  .line {
+    height: map-get($map: $spaces, $key: spacing-1000);
+    width: 1px;
+    border: 1px solid $clr-slate-300;
+  }
+
+  .number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: map-get($map: $spaces, $key: spacing-700);
+    height: map-get($map: $spaces, $key: spacing-700);
+    border-radius: 50%;
+    border: 1px solid $clr-slate-300;
     @extend .text-preset-5;
     color: $clr-slate-600;
   }
 
-  &--2 {
-    margin-bottom: - map-get($spaces, spacing-350);
+  &--2 .number {
+    background-color: #fff;
+    z-index: 2;
   }
-}
-
-.line {
-  position: absolute;
-  background-color: $clr-slate-300;
-  width: 1px;
-  height: map-get($spaces, spacing-1000);
-  bottom: 100%;
-  left: 50%;
 }
 
 .customer__images {
@@ -292,6 +291,11 @@ body {
 }
 
 .footer {
+  margin-block-start: - map-get(
+      $map: $spaces,
+      $key: spacing-350
+    );
+
   width: 100%;
   padding: map-get($spaces, spacing-800)
     map-get($spaces, spacing-400);
