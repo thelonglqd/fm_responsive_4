@@ -141,76 +141,102 @@ body {
   }
 }
 
-.hero__image {
-  display: flex;
-  align-items: center;
-  margin-block-start: map-get($spaces, spacing-500);
-  &--left {
-    flex-grow: 1;
-    transform: translateX(- map-get($spaces, spacing-350));
-    margin-right: - map-get($spaces, spacing-200);
+.hero__container {
+  display: grid;
+  grid-template-areas:
+    'hero-img1 hero-img2'
+    'hero-text hero-text';
 
-    @media (width: 768px) {
-      transform: none;
-      margin: 0;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
+  @media (min-width: 1024px) {
+    grid-template-areas: 'hero-img1 hero-text hero-img2';
+    grid-template-columns: repeat(3, 1fr);
+    gap: map-get($map: $spaces, $key: spacing-400);
   }
 
-  &--right {
-    flex-grow: 1;
-    transform: translateX(map-get($spaces, spacing-200));
-
-    @media (width: 768px) {
-      transform: none;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-  }
-}
-
-.heading {
-  .heading__information {
-    max-width: 30rem;
-    margin-block-start: map-get($spaces, spacing-700);
-  }
-
-  .heading__title {
-    text-align: center;
-    @extend .text-preset-1;
-    color: $clr-slate-900;
-
-    &--up,
-    &--down {
-      display: block;
-    }
-  }
-
-  .heading__description {
-    margin-block-start: map-get($spaces, spacing-400);
-    @extend .text-preset-4;
-    text-align: center;
-    color: $clr-slate-600;
-  }
-
-  .heading__cta {
-    width: 100%;
+  .hero__image {
     display: flex;
-    flex-wrap: wrap;
-    gap: map-get($spaces, spacing-200);
-    justify-content: center;
+    align-items: center;
+    margin-block-start: map-get($spaces, spacing-500);
 
-    margin-block: map-get($spaces, spacing-200)
-      map-get($spaces, spacing-800);
+    &--left {
+      grid-area: hero-img1;
+      flex-grow: 1;
+      transform: translateX(
+        - map-get($spaces, spacing-350)
+      );
+      margin-right: - map-get($spaces, spacing-200);
+
+      @media (width: 768px) {
+        transform: none;
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    &--right {
+      grid-area: hero-img2;
+      flex-grow: 1;
+      transform: translateX(map-get($spaces, spacing-200));
+
+      @media (width: 768px) {
+        transform: none;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .heading {
+    grid-area: hero-text;
+    max-width: 20rem;
+    align-self: center;
+    justify-self: center;
+
+    @media (min-width: 768px) {
+      max-width: 30rem;
+    }
+
+    .heading__information {
+      margin-block-start: map-get($spaces, spacing-700);
+    }
+
+    .heading__title {
+      text-align: center;
+      @extend .text-preset-1;
+      color: $clr-slate-900;
+
+      &--up,
+      &--down {
+        display: block;
+      }
+    }
+
+    .heading__description {
+      margin-block-start: map-get($spaces, spacing-400);
+      @extend .text-preset-4;
+      text-align: center;
+      color: $clr-slate-600;
+    }
+
+    .heading__cta {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: map-get($spaces, spacing-200);
+      justify-content: center;
+
+      margin-block: map-get($spaces, spacing-200)
+        map-get($spaces, spacing-800);
+    }
   }
 }
 
@@ -291,6 +317,10 @@ body {
 }
 
 .footer {
+  grid-column: full;
+  display: grid;
+  grid-template-columns: inherit;
+
   margin-block-start: - map-get(
       $map: $spaces,
       $key: spacing-350
@@ -306,11 +336,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: map-get($spaces, spacing-300);
-
   @media (min-width: 768px) {
     background-image: url('assets/tablet/image-footer.jpg');
   }
@@ -324,6 +349,19 @@ body {
     height: 100%;
     background-color: rgba($clr-cyan-600, 0.9);
     z-index: 1;
+  }
+
+  .footer__content {
+    grid-column: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: map-get($spaces, spacing-300);
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   .footer__title {
