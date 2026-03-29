@@ -153,7 +153,7 @@ body {
   @media (min-width: $breakpoints-desktop) {
     grid-template-areas: 'hero-img1 hero-text hero-img2';
     grid-template-columns: repeat(3, 1fr);
-    gap: map-get($map: $spaces, $key: spacing-400);
+    gap: map-get($spaces, spacing-400);
   }
 
   .hero__image {
@@ -251,7 +251,7 @@ body {
   margin-block-start: map-get($spaces, spacing-700);
 
   .line {
-    height: map-get($map: $spaces, $key: spacing-1000);
+    height: map-get($spaces, spacing-1000);
     width: 1px;
     border: 1px solid $clr-slate-300;
   }
@@ -260,8 +260,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: map-get($map: $spaces, $key: spacing-700);
-    height: map-get($map: $spaces, $key: spacing-700);
+    width: map-get($spaces, spacing-700);
+    height: map-get($spaces, spacing-700);
     border-radius: 50%;
     border: 1px solid $clr-slate-300;
     @extend %text-preset-5;
