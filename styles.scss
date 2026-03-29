@@ -30,9 +30,7 @@
   /* Weights */
   --fw-medium: 500;
   --fw-black: 900;
-}
 
-:root {
   /* Preset 1 */
   --p1-size: var(--fs-600);
   --p1-weight: var(--fw-black);
@@ -74,17 +72,34 @@
   }
 }
 
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 body {
   font-family: $font-family-base;
   background-color: $clr-white;
 }
 
 .main-layout {
+  --padding-inline: 1rem;
+  --content-max-width: 80%;
+
   display: grid;
   grid-template-columns:
-    [full-start] minmax(map-get($spaces, spacing-400), 1fr)
-    [main-start] minmax(0, 75rem) [main-end]
-    minmax(map-get($spaces, spacing-400), 1fr) [full-end];
+    [full-start] var(--padding-inline)
+    [main-start] calc(100% - (var(--padding-inline) * 2))
+    [main-end] var(--padding-inline) [full-end];
+
+  @media (min-width: $breakpoints-tablet) {
+    --padding-inline: 2rem;
+  }
+
+  @media (min-width: $breakpoints-desktop) {
+    --padding-inline: 5rem;
+  }
 
   & > * {
     grid-column: main-start / main-end;
@@ -92,7 +107,6 @@ body {
   }
 
   & > .full-bleed {
-    justify-self: stretch;
     grid-column: full-start / full-end;
     overflow-x: hidden;
   }
@@ -135,6 +149,7 @@ body {
 
 .header__logo {
   margin-block-start: map-get($spaces, spacing-700);
+  overflow-x: hidden;
   .header__image {
     img {
       width: 100%;
@@ -145,10 +160,13 @@ body {
 }
 
 .hero__container {
+  margin-block-start: map-get($spaces, spacing-800);
+
   display: grid;
   grid-template-areas:
     'hero-img1 hero-img2'
     'hero-text hero-text';
+  grid-template-columns: repeat(2, 1fr);
 
   @media (min-width: $breakpoints-desktop) {
     grid-template-areas: 'hero-img1 hero-text hero-img2';
@@ -168,33 +186,36 @@ body {
         - map-get($spaces, spacing-350)
       );
 
-      margin-right: - map-get($spaces, spacing-200);
+      margin-right: - map-get($spaces, spacing-350);
 
       @media (min-width: $breakpoints-tablet) {
-        transform: none;
-        margin: 0;
+        transform: translateX(
+          - map-get($spaces, spacing-400)
+        );
+
+        margin-right: - map-get($spaces, spacing-400);
       }
 
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
+      @media (min-width: $breakpoints-desktop) {
+        transform: none;
+        margin: 0;
       }
     }
 
     &--right {
       grid-area: hero-img2;
       flex-grow: 1;
-      transform: translateX(map-get($spaces, spacing-200));
+      transform: translateX(map-get($spaces, spacing-350));
 
       @media (width: $breakpoints-tablet) {
-        transform: none;
+        transform: translateX(
+          map-get($spaces, spacing-400)
+        );
       }
 
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
+      @media (min-width: $breakpoints-desktop) {
+        transform: none;
+        margin: 0;
       }
     }
   }
@@ -292,6 +313,14 @@ body {
       object-fit: cover;
     }
   }
+
+  @media (min-width: $breakpoints-tablet) {
+    gap: map-get($spaces, spacing-300);
+  }
+
+  @media (min-width: $breakpoints-desktop) {
+    gap: map-get($spaces, spacing-400);
+  }
 }
 
 .feature__description {
@@ -324,8 +353,8 @@ body {
   padding: map-get($spaces, spacing-1400)
     map-get($spaces, spacing-800);
   grid-column: full-start / full-end;
-  display: grid;
-  grid-template-columns: inherit;
+  // display: grid;
+  // grid-template-columns: inherit;
 
   margin-block-start: - map-get(
       $map: $spaces,
@@ -356,14 +385,15 @@ body {
   }
 
   .footer__content {
-    grid-column: main-start / main-end;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: map-get($spaces, spacing-300);
+    justify-content: space-between;
 
     @media (min-width: $breakpoints-desktop) {
       flex-direction: row;
+      gap: 0;
       justify-content: space-between;
     }
   }
