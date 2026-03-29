@@ -93,7 +93,7 @@ body {
   }
 
   & > .full-bleed {
-    justify-self: center;
+    justify-self: stretch;
     grid-column: full;
     overflow-x: hidden;
   }
@@ -145,10 +145,16 @@ body {
   display: flex;
   align-items: center;
   margin-block-start: map-get($spaces, spacing-500);
-
   &--left {
+    flex-grow: 1;
     transform: translateX(- map-get($spaces, spacing-350));
-    margin-right: - map-get($spaces, spacing-350);
+    margin-right: - map-get($spaces, spacing-200);
+
+    @media (width: 768px) {
+      transform: none;
+      margin: 0;
+    }
+
     img {
       width: 100%;
       height: auto;
@@ -157,7 +163,13 @@ body {
   }
 
   &--right {
-    transform: translateX(map-get($spaces, spacing-350));
+    flex-grow: 1;
+    transform: translateX(map-get($spaces, spacing-200));
+
+    @media (width: 768px) {
+      transform: none;
+    }
+
     img {
       width: 100%;
       height: auto;
@@ -281,7 +293,6 @@ body {
 
 .footer {
   width: 100%;
-  // margin-top: - map-get($spaces, spacing-350);
   padding: map-get($spaces, spacing-800)
     map-get($spaces, spacing-400);
   position: relative;
@@ -298,8 +309,6 @@ body {
 
   @media (min-width: 768px) {
     background-image: url('assets/tablet/image-footer.jpg');
-    // background-size: cover;
-    // background-repeat: no-repeat;
   }
 
   &::before {

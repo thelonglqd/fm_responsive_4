@@ -121,7 +121,7 @@ body {
   justify-self: center;
 }
 .main-layout > .full-bleed {
-  justify-self: center;
+  justify-self: stretch;
   grid-column: full;
   overflow-x: hidden;
 }
@@ -163,8 +163,15 @@ body {
   margin-block-start: 2.5rem;
 }
 .hero__image--left {
+  flex-grow: 1;
   transform: translateX(-1.75rem);
-  margin-right: -1.75rem;
+  margin-right: -1rem;
+}
+@media (width: 768px) {
+  .hero__image--left {
+    transform: none;
+    margin: 0;
+  }
 }
 .hero__image--left img {
   width: 100%;
@@ -172,7 +179,13 @@ body {
   object-fit: cover;
 }
 .hero__image--right {
-  transform: translateX(1.75rem);
+  flex-grow: 1;
+  transform: translateX(1rem);
+}
+@media (width: 768px) {
+  .hero__image--right {
+    transform: none;
+  }
 }
 .hero__image--right img {
   width: 100%;
