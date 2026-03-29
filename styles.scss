@@ -25,7 +25,7 @@
   --lh-base: 1.1;
   --lh-lg: 1.5;
   --ls-base: 0;
-  --ls-lg: 4px;
+  --ls-lg: 0.25rem;
 
   /* Weights */
   --fw-medium: 500;
@@ -63,13 +63,12 @@
   --p5-lh: var(--lh-lg);
   --p5-ls: var(--ls-base);
 
-  /* Responsive: Chỉ ghi đè những thứ THAY ĐỔI */
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoints-tablet) {
     // Tablet preset 1
     --p1-size: var(--fs-600);
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: $breakpoints-desktop) {
     // Desktop
     --p1-size: var(--fs-800);
   }
@@ -128,6 +127,10 @@ body {
   span {
     color: $clr-white;
   }
+
+  span:last-child {
+    color: $clr-purple-300;
+  }
 }
 
 .header__logo {
@@ -147,7 +150,7 @@ body {
     'hero-img1 hero-img2'
     'hero-text hero-text';
 
-  @media (min-width: 1024px) {
+  @media (min-width: $breakpoints-desktop) {
     grid-template-areas: 'hero-img1 hero-text hero-img2';
     grid-template-columns: repeat(3, 1fr);
     gap: map-get($map: $spaces, $key: spacing-400);
@@ -164,9 +167,10 @@ body {
       transform: translateX(
         - map-get($spaces, spacing-350)
       );
+
       margin-right: - map-get($spaces, spacing-200);
 
-      @media (width: 768px) {
+      @media (min-width: $breakpoints-tablet) {
         transform: none;
         margin: 0;
       }
@@ -183,7 +187,7 @@ body {
       flex-grow: 1;
       transform: translateX(map-get($spaces, spacing-200));
 
-      @media (width: 768px) {
+      @media (width: $breakpoints-tablet) {
         transform: none;
       }
 
@@ -201,7 +205,7 @@ body {
     align-self: center;
     justify-self: center;
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoints-tablet) {
       max-width: 30rem;
     }
 
@@ -275,7 +279,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: map-get($spaces, spacing-200);
   margin-block: map-get($spaces, spacing-800);
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoints-tablet) {
     grid-template-columns: repeat(4, 1fr);
   }
 
@@ -317,6 +321,8 @@ body {
 }
 
 .footer {
+  padding: map-get($spaces, spacing-1400)
+    map-get($spaces, spacing-800);
   grid-column: full;
   display: grid;
   grid-template-columns: inherit;
@@ -327,8 +333,6 @@ body {
     );
 
   width: 100%;
-  padding: map-get($spaces, spacing-800)
-    map-get($spaces, spacing-400);
   position: relative;
   color: $clr-white;
   background-image: url('assets/mobile/image-footer.jpg');
@@ -336,7 +340,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoints-tablet) {
     background-image: url('assets/tablet/image-footer.jpg');
   }
 
@@ -358,7 +362,7 @@ body {
     align-items: center;
     gap: map-get($spaces, spacing-300);
 
-    @media (min-width: 1024px) {
+    @media (min-width: $breakpoints-desktop) {
       flex-direction: row;
       justify-content: space-between;
     }
@@ -386,6 +390,5 @@ body {
 
     display: flex;
     justify-content: center;
-    // margin-bottom: 200px;
   }
 }
